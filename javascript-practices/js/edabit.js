@@ -11,7 +11,7 @@ function calculateExponent(num, exp) {
 }
 function calculateExponent(num, exp) {
     return exp > 1 ? num * calculateExponent(num, exp - 1) :  num;
-}
+}   ///// could you invoke a function inside itself?
 function calculateExponent(num, exp) {
     return num ** exp;
 }
@@ -22,7 +22,10 @@ const calculateExponent = (num, exp) => {
     }
     return newexp;
 }
-calculateExponent = Math.pow    //???
+calculateExponent = Math.pow    //??? how did this work?
+function posCom(num) {
+    return 2 << (num - 1);
+} ///return 2 to the power of num
 
 //evaluate , caution!! should not be used regularlly
 function evaluate(equation) {
@@ -179,4 +182,88 @@ function isEvenOrOdd(num) {
     return num % 2 ? 'odd' : 'even';
 }
 isEvenOrOdd = (n) => [`even`, `odd`][n & 1];
+
+//function that returns the opposite of the given boolean, as a number
+//flipBool(true) ➞ 0
+// flipBool(false) ➞ 1
+// flipBool(1) ➞ 0
+// flipBool(0) ➞ 1
+function flipBool(b) {
+    return Number(!b);
+}
+function flipBool(b) {
+    return b === true || b === 1 ? 0: 1;
+}
+const flipBool=b=> b ? 0 : 1;
+function flipBool(b) {
+    return (!b)*1;
+}
+flipBool=b=>1-b
+const flipBool = b => b ^ 1;  /// what is this???
+
+//difference between parseInt() and Math.round()
+parseInt(3.7)  // result is 3
+Math.round(3.7)  //result is 4
+
+//function to check if an array has a particular element
+function check(arr, el) {
+    return arr.includes(el)
+}
+function check(arr, el) {
+    for (var i = 0; i < arr.length; i++){
+        if (arr[i] === el){
+            return true;
+        }
+    }
+    return false;
+}
+function check(arr, el) {
+    return arr.indexOf(el) !== -1;  // >= 0;
+}
+
+//concatenate two arrays
+function concat(arr1, arr2) {
+    return [...arr1,...arr2]
+}
+function concat(arr1, arr2) {
+    return arr1.concat(arr2);
+}
+function concat(arr1, arr2) {
+    for (item of arr2){
+        arr1.push(item)
+    }
+    return arr1
+}
+function concat(arr1, arr2) {
+    for(let i=0;i<= arr2.length-1;i++)
+    {
+        arr1.push(arr2[i]);
+    }
+    return arr1;
+}
+
+//reverse a string
+function solution(str){
+    return str.split('').reverse().join('');
+}
+const solution = s => [...s].reverse().join('');
+function solution(s){
+    var o = '';
+    for (var i = s.length - 1; i >= 0; i--)
+        o += s[i];
+    return o;
+}
+function solution(str){
+    return str.length > 0 ? solution(str.substring(1)) + str.charAt(0) : '';
+}
+
+// adding numbers from 1 to num
+// recursion
+function addUp(num) {
+    if(num == 1) return num;
+    return num + addUp(num - 1);
+}
+
+
+
 
