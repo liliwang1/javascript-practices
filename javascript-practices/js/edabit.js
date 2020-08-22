@@ -290,3 +290,12 @@ function isLastCharacterN(word) {
     return word.split('').pop() === 'n';
 }
 
+// round up a decimal number to its biggest adjacent integer
+function carsNeeded(n) {
+    return Math.ceil(n / 5);
+}
+function carsNeeded(n) {
+    return Math.round(n / 5) >= n / 5 ? Math.round(n / 5) : Math.round(n / 5) + 1;
+}
+Math.floor() //???
+
