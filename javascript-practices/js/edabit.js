@@ -264,6 +264,29 @@ function addUp(num) {
     return num + addUp(num - 1);
 }
 
-
-
+// check if the last character of a string is "n"
+function isLastCharacterN(word) {
+    return word.endsWith('n');
+}
+function isLastCharacterN(word) {
+    return /n$/.test(word);
+}
+function isLastCharacterN(word) {
+    return word.substr(-1) === "n";
+}
+function isLastCharacterN(word) {
+    return [...word].pop() === "n";
+}
+function isLastCharacterN(word) {
+    return word.charAt(word.length - 1) === 'n';
+}
+function isLastCharacterN(word) {
+    return word.slice(-1) === 'n';
+}
+function isLastCharacterN(word) {
+    return word[word.length - 1] === 'n';
+}
+function isLastCharacterN(word) {
+    return word.split('').pop() === 'n';
+}
 
