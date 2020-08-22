@@ -263,6 +263,18 @@ function addUp(num) {
     if(num == 1) return num;
     return num + addUp(num - 1);
 }
+const addUpTo = n => n ===	0 ? 0 : n === 1 ? 1 : n + addUpTo(n - 1);
+function addUpTo(n) {
+    var count = 0;
+    for (var i = 0; i <= n; i++) {
+        count += i;
+    }
+    return count;
+}
+function addUpTo(n) {
+    return (n * (n + 1)) / 2;
+}
+const addUpTo = n => (n*n + n) >> 1;
 
 // check if the last character of a string is "n"
 function isLastCharacterN(word) {
@@ -299,3 +311,31 @@ function carsNeeded(n) {
 }
 Math.floor() //???
 
+//new array that had index added to correspondent element
+function addIndexes(arr) {
+    for (var i = 0; i < arr.length; i++) {
+        arr[i] = arr[i] + i;
+    }
+    return arr;
+}
+function addIndexes(arr) {
+    for (let i = 0; i < arr.length; i++) arr[i] += i;
+    return arr;
+}
+const addIndexes = arr => arr.map((num, idx) => num + idx);
+
+//function that returns true if a string contains any spaces
+function hasSpaces(str) {
+    return str.includes(' ')
+}
+let hasSpaces = (str) => str.split(" ").length > 1;
+function hasSpaces(str) {
+    return str.indexOf(' ') != -1;
+}
+function hasSpaces(str) {
+    return (/\s/).test(str);
+}
+function hasSpaces(str) {
+    let reg = / /g;
+    return reg.test(str);
+}
