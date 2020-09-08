@@ -8,9 +8,44 @@ isTrue("2 = 2") ➞ true
 isTrue("8 < 7") ➞ false
 isTrue("5 = 13") ➞ false
 isTrue("15 > 4") ➞ true
-Notes
 Tests will only have three types of relations: =, >, and <
 Many approaches work here, but the eval() function is particularly useful! */
+function isTrue(str) {
+    let arr = modifyCompare(str).split(' ');
+    if(Number(arr[0]) === Number(arr[2]) && arr[1] === '=') {
+        return true;
+    } else if(Number(arr[0]) > Number(arr[2]) && arr[1] === '>') {
+        return true;
+    } else if(Number(arr[0]) < Number(arr[2]) && arr[1] === '<') {
+        return true;
+    } else {
+        return false;
+    }
+}
+function modifyCompare(str) {
+    return str.split('')
+        .map(ele => '>=<'.includes(ele)? ` ${ele} `: ele)
+        .join('');
+}
+// simplify
+function isTrue(str) {
+    let arr = modifyCompare(str).split(' ');
+    if(Number(arr[0]) === Number(arr[2]) && arr[1] === '=') {
+        return true;
+    } else if(Number(arr[0]) > Number(arr[2]) && arr[1] === '>') {
+        return true;
+    } else return Number(arr[0]) < Number(arr[2]) && arr[1] === '<';
+}
+function modifyCompare(str) {
+    return str.split('')
+        .map(ele => '>=<'.includes(ele)? ` ${ele} `: ele)
+        .join('');
+}
+// other solutions
+function isTrue(relation) {
+    return eval(relation.replace('=', '==='))
+}
+
 
 /* 2 How Much is True?
     Create a function which returns the number of true values there are in an array.
@@ -341,4 +376,61 @@ function sevenBoom(arr) {
     return arr.some(x => /7/.test(x)) ? 'Boom!' : 'there is no 7 in the array';
 }
 
-/* 10
+/* 10 Happy Numbers
+Given any number, we can create a new number by adding the sums of squares of digits of that number. For example, given 203, our new number is 4 + 0 + 9 = 13. If we repeat this process, we get a sequence of numbers:
+203 -> 13 -> 10 -> 1 -> 1
+Sometimes, like with 203, the sequence reaches (and stays at) 1. Numbers like this are called happy.
+Not all numbers are happy. If we started with 11, the sequence would be:
+11 -> 2 -> 4 -> 16 -> ...
+This sequence will never reach 1, and so the number 11 is called unhappy.
+Given a positive whole number, you have to determine whether that number is happy or unhappy.
+Examples
+happy(203) ➞ true
+happy(11) ➞ false
+happy(107) ➞ false
+You can assume (and it is actually true!) that all positive whole numbers are either happy or unhappy. Any happy number will have a 1 in its sequence, and every unhappy number will have a 4 in its sequence.
+The only numbers passed to your function will be positive whole numbers. */
+function happy(n) {
+    if (n === 1) {
+        return true;
+    } else if(n === 4) {
+        return false;
+    } else {
+        var newN = n.toString().split('').reduce((acc, ele) =>  acc + ele * ele, 0);
+        return happy(newN);
+    }
+}
+// other solutions
+function happy(n) {
+    if (n == 1) return true;
+    if (n == 4) return false;
+    return happy([...n.toString()]
+        .reduce((sum, v) => Math.pow(Number(v), 2) + sum, 0))
+}
+function happy(n) {
+    while (n !==4 && n !==1){
+        n=[...''+n].map(e=>Math.pow(e,2)).reduce((acc, cur)=>acc+ cur,0)
+    }
+    return n === 1;
+}
+const sum = arr => arr.reduce((total, num) => total + num, 0);
+const getDigits = num => String(num).split('').map(Number);
+const happy = num => {
+    if (num === 1) return true;
+    if (num === 4) return false;
+    return happy(sum(getDigits(num).map(digit => Math.pow(digit, 2))));
+};
+function happy(n) {
+    if (n == 1) return true;
+    if (n == 4) return false;
+    return happy(n.toString().split("").map(w=>Math.pow(parseInt(w), 2)).reduce((a,b)=>a+b));
+}
+function happy(n) {
+    while(true){
+        if(n == 1) return true;
+        if(n == 4) return false;
+        n = n.toString().split("").reduce(function(accum,x){
+            return accum + (x*x);
+        }, 0);
+    }
+}
