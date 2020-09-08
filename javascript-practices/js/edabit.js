@@ -339,3 +339,5 @@ function hasSpaces(str) {
     let reg = / /g;
     return reg.test(str);
 }
+
+
