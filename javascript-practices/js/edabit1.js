@@ -1,4 +1,4 @@
-/* Is it True?
+/* 1 Is it True?
 In this challenge you will be given a relation between two numbers, written as a string.
 Here are some example inputs:
 "2 = 2", "8 < 7", "5 = 13", "15 > 4"
@@ -434,3 +434,18 @@ function happy(n) {
         }, 0);
     }
 }
+const happy=n=> {
+    const work=x=>[...""+x].map((e)=>e*e).reduce((acc,next)=>acc+next);
+    let rdc=work(n);
+    return rdc==1?true:rdc==4?false:happy(rdc)
+}
+function happy(n) {
+    if (n === 1) {
+        return true
+    } else if (n === 4) {
+        return false
+    }
+    newN = String(n).split('').reduce((sum, curr) => sum + Math.pow(parseInt(curr), 2), 0)
+    return happy(newN)
+}
+
